@@ -1,0 +1,25 @@
+PROCEDURE insertion_sort(VAR tab : ARRAY_OF INTEGER[10])
+VAR
+  i,j,x : INTEGER;
+BEGIN
+    FOR i FROM 1 TO tab.length-1 STEP 1  DO
+      x := tab[i];
+      j:= i-1;
+
+      WHILE (j>=0 && tab[j]>x) DO
+        tab[j+1] := tab[j];
+        j:= j-1;
+      END_WHILE
+
+      tab[j+1] := x;
+    END_FOR
+END
+
+ALGORITHM main
+VAR
+  tab : ARRAY_OF INTEGER[10];
+BEGIN
+  Read(tab);
+  insertion_sort(tab);
+  Write(tab);
+END

@@ -1,0 +1,29 @@
+ALGORITHM Sol1
+VAR
+    tab1, tab2: ARRAY_OF Integer[5];
+    i,j: Integer;
+    sum: Integer :=0;
+BEGIN
+    Read(tab1);
+    Read(tab2);
+
+    FOR i FROM 0 TO tab1.length-1 STEP 1  DO 
+        FOR j FROM 0 TO tab2.length-1 STEP 1  DO
+            IF (tab1[i]=tab2[j]) THEN
+                sum = sum + tab1[i]
+                BREAK;
+            END_IF
+        END_FOR
+    END_FOR
+
+    FOR j FROM 0 TO tab2.length-1 STEP 1  DO 
+        FOR i FROM 0 TO tab1.length-1 STEP 1  DO
+            IF (tab2[j]=tab1[i]) THEN
+                sum = sum + tab2[i]
+                BREAK;
+            END_IF
+        END_FOR
+    END_FOR
+
+    Write("The sum is : ",sum);
+END

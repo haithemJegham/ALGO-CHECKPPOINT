@@ -1,0 +1,39 @@
+ALGORITHM Sol2
+VAR
+    tab1, tab2: ARRAY_OF Integer[5];
+    htab : HASH_TABLE<INTEGER,INTEGER>;
+    j,count: Integer;
+    sum: Integer :=0;
+
+BEGIN
+    Read(tab1);
+    Read(tab2);
+
+    FOR j FROM 0 TO tab1.length-1 STEP 1  DO 
+            htab.insert(tab1[j],1);
+    END_FOR 
+
+    FOR j FROM 0 TO tab2.length-1 STEP 1  DO 
+        IF (htab.lookup(tab2[j]) = TRUE) THEN
+            count := htab.get(tab2[j]);
+            htab.insert(tab2[j],count+1);
+        ELSE
+            htab.insert(tab2[j],1);
+        END_IF
+    END_FOR
+
+    FOR j FROM 0 TO tab1.length-1 STEP 1  DO
+        IF (htab.get(tab1[j]=1)) THEN
+            sum:= sum + tab1[j];
+            BREAK;
+        END_IF
+    END_FOR
+
+    FOR j FROM 0 TO tab2.length-1 STEP 1  DO
+        IF (htab.get(tab2[j]=1)) THEN
+            sum:= sum + tab2[j];
+            BREAK;
+        END_IF
+    END_FOR
+    Write("The sum is : ",sum);
+END
